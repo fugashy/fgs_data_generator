@@ -3,6 +3,15 @@ from abc import ABC, abstractmethod
 
 import numpy as np
 
+def create(conf_dict):
+    if conf_dict['type'] == 'normal_distribution':
+        return NormalDistribution.create(conf_dict)
+    elif conf_dict['type'] == 'rigid_motion':
+        return RigidMotion.create(conf_dict)
+    else:
+        raise NotImplementedError(
+                '{} is not implemented.'.format(conf_dict['type']))
+
 
 class ModelModurator(ABC):
     @abstractmethod
@@ -13,7 +22,7 @@ class ModelModurator(ABC):
 class NormalDistribution(ModelModurator):
     @staticmethod
     def create(config_dict):
-        std_dev = conf_dict['std_dev']
+        std_dev = config_dict['std_dev']
         return NormalDistribution(std_dev)
 
     def __init__(self, std_dev):
@@ -24,12 +33,12 @@ class NormalDistribution(ModelModurator):
         return self._modurate(data)
 
 
-class Transformer(ModelModurator):
+class RigidMotion(ModelModurator):
     @staticmethod
     def create(config_dict):
-        rot_rad = conf_dict['rot_rad']
-        trans = conf_dict['trans']
-        return Transformer(rot_rad, trans)
+        rot_rad = config_dict['rot_rad']
+        trans = config_dict['trans']
+        return RigidMotion(rot_rad, trans)
 
     def __init__(self, rot_rad, trans):
         rot_mat = np.array(

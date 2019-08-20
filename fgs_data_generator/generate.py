@@ -16,7 +16,8 @@ def generate(config_path, as_node=True):
     f = open(config_path, 'r')
     config_dict = yaml.load(f, Loader=yaml.FullLoader)
 
-    data = data_2d.create(config_dict['model'])
+    modurator = modurators.create(config_dict['modurator'])
+    data = data_2d.create(modurator, config_dict['model'])
     data.save('/tmp/generated_data.yaml')
 
     if 'plot' in config_dict and config_dict['plot']:
