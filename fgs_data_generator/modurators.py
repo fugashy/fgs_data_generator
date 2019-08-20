@@ -4,13 +4,13 @@ from abc import ABC, abstractmethod
 import numpy as np
 
 
-class GroundtruthModurator(ABC):
+class ModelModurator(ABC):
     @abstractmethod
     def modurate(self, data):
         raise NotImplementedError('To developer, inherit this class')
 
 
-class NormalDistribution(GroundtruthModurator):
+class NormalDistribution(ModelModurator):
     @staticmethod
     def create(config_dict):
         std_dev = conf_dict['std_dev']
@@ -24,7 +24,7 @@ class NormalDistribution(GroundtruthModurator):
         return self._modurate(data)
 
 
-class Transformer(GroundtruthModurator):
+class Transformer(ModelModurator):
     @staticmethod
     def create(config_dict):
         rot_rad = conf_dict['rot_rad']
