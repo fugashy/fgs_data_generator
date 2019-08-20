@@ -9,9 +9,9 @@ import yaml
 
 def generate(config_path, as_node=True):
     if as_node:
-        from fgs_data_generator import data_2d, plot
+        from fgs_data_generator import data_2d, plot, modurators
     else:
-        import data_2d, plot
+        import data_2d, plot, modurators
 
     f = open(config_path, 'r')
     config_dict = yaml.load(f, Loader=yaml.FullLoader)

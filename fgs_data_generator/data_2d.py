@@ -39,20 +39,10 @@ class Data2d():
     def obs(self):
         return self._obs
 
-    @property
-    def cov(self):
-        return self._cov
-
-    @property
-    def center(self):
-        return self._center
-
     def save(self, filepath):
         file_handle = cv2.FileStorage(filepath, cv2.FileStorage_WRITE)
         file_handle.write('ground_truth', np.array(self._gt))
         file_handle.write('observation', np.array(self._obs))
-        file_handle.write('center', np.array(self._center))
-        file_handle.write('covariance', np.array(self._cov))
 
     def _generate(self, generate_data):
         self._gt = generate_data()
