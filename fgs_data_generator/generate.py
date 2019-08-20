@@ -7,7 +7,7 @@ import yaml
 
 
 
-def generate(config_path, as_node=False):
+def generate(config_path, as_node=True):
     if as_node:
         from fgs_data_generator import data_2d, plot
     else:
