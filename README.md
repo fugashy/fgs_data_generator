@@ -11,7 +11,7 @@ Generate data file for several purpose.
     There are several data model and noise model (not yet. will be there near future.)
 
     ```bash
-    ros2 run fgs_data_generator generate __params:=PATH_TO_CONFIG.yaml
+    ros2 run fgs_data_generator generate --ros-args --param-file PATH_TO_CONFIG.yaml
     ```
 
     or

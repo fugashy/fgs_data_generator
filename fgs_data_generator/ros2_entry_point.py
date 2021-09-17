@@ -14,7 +14,6 @@ def generate(args=None):
     # should declare parameter name
     node.declare_parameter(name='config_path', value='')
     config_path = node.get_parameter('config_path').value
-    print(config_path)
 
     try:
         factory(config_path)
